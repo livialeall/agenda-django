@@ -1,12 +1,17 @@
-{% load static %}<!DOCTYPE html> {% comment %} para poder chamar um arquivo estatico do estilo {% endcomment %}
-<html lang="en">
+<!DOCTYPE html> {% comment %} para poder chamar um arquivo estatico do estilo {% endcomment %}
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href={% static "global/css/style.css" %}> 
-    <title>Document</title>
+  {% include "global/partials/head.html" %}
 </head>
+
+{% comment %} em todos que eu extender o base {% endcomment %}
 <body>
-    <h1>QLQ CHOSE</h1>
+   
+{% include "global/partials/header.html" %}
+    <main class="content"> 
+        {% block content %}{% endblock content %}
+        {% include "global/partials/pagination.html" %}
+    </main>
+
 </body>
 </html>
