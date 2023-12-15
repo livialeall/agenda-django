@@ -10,6 +10,10 @@ urlpatterns = [
     #contact CRUD - padrao
     path('contact/<int:contact_id>/detail/',views.contact,name='contact'),
     #criar contato
-    path('contact/create/',views.create,name='create')
+    path('contact/create/',views.create,name='create'),
+    #update - parametro dinamico do contato
+    path('contact/<int:contact_id>/update/',views.update,name='update'),
+    #deletar contato
+    path('contact/<int:contact_id>/delete/',views.delete,name='delete'),
     
 ]

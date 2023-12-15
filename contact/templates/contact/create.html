@@ -4,8 +4,10 @@
 
         <h2>Contact</h2>
 
+
+        {% comment %} no action é pra aonde ele envia os dados do formulario {% endcomment %}
         <form 
-        action="{% url "contact:create" %}"
+        action="{{ form_action }}" 
         method="POST"
         enctype="multipart/form-data"
         
@@ -17,12 +19,33 @@
                 <label for="{{field.id_for_label}}">{{field.label}}</label>
                 {{ field }} {% comment %} ja é o campo de input {% endcomment %}
 
-                {{field.errors}}
+                {{field.errors}} {% comment %} erro simulado de validação do campo {% endcomment %}
+
+                {% if field.help_text %}
+                   <p class="help-teext"> {{ field.help_text}} </p>
+                {% endif %}
+              
                 </div>
-            
+
+                <div class="form-group">
+                    {% if field.name == 'picture' and field.value.url %}
+                    <img src="{{field.value.url}}" alt=" {{ contact.first_name}}  {{contact.last_name}}">
+                {% endif %}
+                </div>
             {% endfor %}
+
             
+            
+        </div> {% comment %} validação de erros non_field {% endcomment %}
+        {% if form.non_field_errors %} {% comment %} caso existe algum erro de non_field ele mostra {% endcomment %}
+        <div class="form-content">
+            <div class="form-group">
+                <div class="message error">
+                {{form.non_field_errors}}
+                </div>
+            </div>
         </div>
+        {% endif %}
 
         <div class="form-content">
             <div class="form-group">
