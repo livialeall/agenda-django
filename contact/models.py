@@ -21,7 +21,7 @@ class Contact(models.Model): #campos da tabela
     created_date = models.DateTimeField(default=timezone.now)
     description = models.TextField(blank=True) #nao tem limitação em comparação ao ChartField
     show = models.BooleanField(default=True) #mostr automaticamente 
-    picture = models.ImageField(blank=True, upload_to = 'pictures/%Y/%m') #cria uma pasta picures dentro de media com a legenda do ano e mes
+    picture = models.ImageField(blank=True,null=True, upload_to = 'pictures/%Y/%m') #cria uma pasta picures dentro de media com a legenda do ano e mes
     category = models.ForeignKey(Category,on_delete=models.SET_NULL,blank=True,null=True) #on_delete -> quando eu apagar a categoria o que acontece com o contato? SET_NULL -> quando eu apagar o campo é setado para nulo nos contatos
     owner =  models.ForeignKey(User,on_delete=models.SET_NULL,blank=True,null=True) 
     

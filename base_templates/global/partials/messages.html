@@ -1,0 +1,5 @@
+{% if messages %}
+    {% for message in messages %}
+    <div class="message {{message.tags}}">{{message}}</div> {% comment %} aqui as tags eu consigo relacionar a classe com o tipo de mensagem colocado no user.forms {% endcomment %}
+    {% endfor %}
+{% endif %}

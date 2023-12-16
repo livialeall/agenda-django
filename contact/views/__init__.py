@@ -4,3 +4,4 @@
 
 from .contact_views import * #importa da view( funcionalidade ) que eu crirei - importa todas as funções
 from .contact_forms import *
+from .user_forms import *

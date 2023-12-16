@@ -8,9 +8,7 @@ from django.core.paginator import Paginator
 
 #Pagina que mostra os contatos
 def index(request):
-    contacts = Contact.objects.filter(show=True).order_by('-id') #criando variavel de contato - filtrando tudo que esta com show = True
-    
-    
+    contacts = Contact.objects.filter(show=True,owner=request.user).order_by('-id') #criando variavel de contato - filtrando tudo que esta com show = True aqui nos filtramos os contatos se estar marcado como true e se o field owner é igual ao request.user
     paginator = Paginator(contacts,10)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)

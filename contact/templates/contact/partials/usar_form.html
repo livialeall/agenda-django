@@ -1,0 +1,30 @@
+<form 
+action="{{ form_action }}" 
+method="POST"
+> {% comment %} utilizado para envio de arquivos {% endcomment %}
+{% csrf_token %}
+<div class="form-content">
+    {% for field in form %} {% comment %} para cada field eu crio uma div {% endcomment %}
+        <div class="form-group">
+        <label for="{{field.id_for_label}}">{{field.label}}</label>
+        {{ field }} {% comment %} ja é o campo de input {% endcomment %}
+
+        {{field.errors}} {% comment %} erro simulado de validação do campo {% endcomment %}
+
+        {% if field.help_text %}
+           <p class="help-text"> {{ field.help_text}} </p>
+        {% endif %}
+        </div>
+    {% endfor %}
+
+    
+    
+</div> {% comment %} validação de erros non_field {% endcomment %}
+
+<div class="form-content">
+    <div class="form-group">
+    <button class="btn" type="submit">Send</button>
+    </div>
+</div>
+
+</form>
